@@ -1,6 +1,8 @@
 Switch>en
 Switch#conf t
 Enter configuration commands, one per line.  End with CNTL/Z.
+
+#create name for VLAN
 Switch(config)#
 Switch(config)#vlan 10
 Switch(config-vlan)#name OPERASIONAL
@@ -8,12 +10,16 @@ Switch(config-vlan)#exit
 Switch(config)#vlan 20
 Switch(config-vlan)#name CUSTOMER
 Switch(config-vlan)#exit
+
+#create trunk mode to router with tagging
 Switch(config)
 Switch(config)#interface ethernet 0/0
 Switch(config-if)#switchport trunk encapsulation dot1q
 Switch(config-if)#switchport mode trunk
 Switch(config-if)#switchport trunk allowed vlan 10, 20
 Switch(config-if)#exit
+
+#create access mode to end device
 Switch(config)#
 Switch(config)#interface ethernet 0/1
 Switch(config-if)#switchport mode access
@@ -24,4 +30,6 @@ Switch(config)#interface ethernet 0/2
 Switch(config-if)#switchport mode access
 Switch(config-if)#switchport access vlan 20
 Switch(config-if)#exit
+
+#save configuration
 Switch(config)#do wr
