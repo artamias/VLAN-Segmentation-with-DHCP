@@ -1,0 +1,105 @@
+#configuration via GUI
+
+#combine multiple ports into bridge mode
+/interface/bridge/add name=bridge-WAN
+/interface/bridge/add name=bridge-LAN
+
+#ether 1 wan bridge and ether 2 & ether 3 lan bridge
+/interface/bridge/port/add interface=ether1 bridge=bridge-WAN
+/interface/bridge/port/add interface=ether2 bridge=bridge-LAN
+/interface/bridge/port/add interface=ether3 bridge=bridge-LAN
+
+#add default route wan to isp (dynamic IP)
+/ip/dhcp-client/add interface=bridge-WAN use-peer-dns=no add-default-route=yes
+
+#set dns static (google dns)
+/ip/dns/set servers=8.8.8.8,8.8.4.4 allow-remote-requests=yes
+
+#set firewall for wan IP
+/ip/firewall/nat/add chain=srcnat out-interface=bridge-WAN action=masquerade
+
+#check is bridge-WAN bound
+/ip/dhcp-client/print
+
+#create ip for LAN
+/ip/address/add address=192.168.1.1/24 interface=bridge-LAN
+
+#add VLAN 10 and VLAN 20 with IP Address
+/interface/vlan/add name=Vlan10 vlan-id=10 interface=bridge-LAN
+/interface/vlan/add name=Vlan20 vlan-id=20 interface=bridge-LAN
+/ip/address/add address=192.168.2.1/24 interface=Vlan10
+/ip/address/add address=192.168.3.1/24 interface=Vlan20
+
+#create DHCP for bridge-LAN
+/ip/dhcp-server/setup
+Select interface to run DHCP server on
+
+dhcp server interface: bridge-LAN
+Select network for DHCP addresses
+
+dhcp address space: 192.168.1.0/24
+Select gateway for given network
+
+gateway for dhcp network: 192.168.1.1
+Select pool of ip addresses given out by DHCP server
+
+addresses to give out: 192.168.1.2-192.168.1.254
+Select DNS servers
+
+add dns: yes
+Select DNS servers
+
+dns servers: 8.8.8.8,8.8.4.4
+Select lease time
+
+lease time: 1800
+
+#create DHCP for Vlan 10
+/ip/dhcp-server/setup
+Select interface to run DHCP server on
+
+dhcp server interface: Vlan10
+Select network for DHCP addresses
+
+dhcp address space: 192.168.2.0/24
+Select gateway for given network
+
+gateway for dhcp network: 192.168.2.1
+Select pool of ip addresses given out by DHCP server
+
+addresses to give out: 192.168.2.2-192.168.2.254
+Select DNS servers
+
+add dns: yes
+Select DNS servers
+
+dns servers: 8.8.8.8,8.8.4.4
+Select lease time
+
+lease time: 1800
+
+#create DHCP for Vlan 20
+/ip/dhcp-server/setup
+Select interface to run DHCP server on
+
+dhcp server interface: Vlan20
+Select network for DHCP addresses
+
+dhcp address space: 192.168.3.0/24
+Select gateway for given network
+
+gateway for dhcp network: 192.168.3.1
+Select pool of ip addresses given out by DHCP server
+
+addresses to give out: 192.168.3.2-192.168.3.254
+Select DNS servers
+
+add dns: yes
+Select DNS servers
+
+dns servers: 8.8.8.8,8.8.4.4
+Select lease time
+
+lease time: 1800
+
+
