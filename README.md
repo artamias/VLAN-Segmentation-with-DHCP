@@ -36,6 +36,16 @@ Goals:
 
 Testing Results:
 
+- Switch succes VLAN Configuration
+<img width="1017" height="226" alt="image" src="https://github.com/user-attachments/assets/dab655af-d368-4df3-a6c1-a939dc9f8957" />
+
+
+
+- Switch success TRUNK and ACCESS configuration
+<img width="1021" height="171" alt="image" src="https://github.com/user-attachments/assets/c94c24f2-7f51-4ebf-8097-0a2fcd6f3fdd" />
+
+
+
 - PC VLAN10 successfully received IP via DHCP
 <img width="505" height="72" alt="image" src="https://github.com/user-attachments/assets/8d67d398-89f0-4ff3-b536-5ba13df33c33" />
 
