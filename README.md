@@ -14,3 +14,5 @@ Testing Results:
 - Both VLANs can access internet
 - VLAN20 cannot access VLAN10 (firewall working)
 - Inter-VLAN routing tested via ping gateway
+
+<img width="663" height="769" alt="image" src="https://github.com/user-attachments/assets/ba7c4c61-7c1a-4fc5-8bcb-92cba606ce0b" />
