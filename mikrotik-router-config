@@ -21,10 +21,7 @@
 #check is bridge-WAN bound
 /ip/dhcp-client/print
 
-#create ip for LAN
-/ip/address/add address=192.168.1.1/24 interface=bridge-LAN
-
-#add VLAN 10 and VLAN 20 with IP Address
+#add IP Address for VLAN 10 and VLAN 20
 /interface/vlan/add name=Vlan10 vlan-id=10 interface=bridge-LAN
 /interface/vlan/add name=Vlan20 vlan-id=20 interface=bridge-LAN
 /ip/address/add address=192.168.2.1/24 interface=Vlan10
