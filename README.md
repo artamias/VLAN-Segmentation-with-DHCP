@@ -10,7 +10,6 @@
 | Device        | Interface | USED   | IP Address        | Description              |
 |--------------|------------|--------|-------------------|--------------------------|
 | MikroTik     | ether1     | WAN    | 192.168.65.130/24 | Internet Access          |
-| MikroTik     | ether2     | LAN    | 192.168.65.130/24 | Internet Access          |
 | MikroTik     | Vlan10     | VLAN   | 192.168.2.1/24    | Gateway VLAN 10          |
 | MikroTik     | Vlan20     | VLAN   | 192.168.3.1/24    | Gateway VLAN 20          |
 | Cisco Switch | e0/0       | TRUNK  | -                 | Trunk to MikroTik        |
