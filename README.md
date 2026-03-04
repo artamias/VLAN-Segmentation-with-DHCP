@@ -1,6 +1,31 @@
-This project simulates enterprise network segmentation using VLAN, DHCP server, trunk and access port configuration.
+## This project simulates enterprise network segmentation using VLAN, DHCP server, trunk and access port configuration.
+
+
+## Network Topology Diagram
 
 <img width="663" height="769" alt="image" src="https://github.com/user-attachments/assets/ba7c4c61-7c1a-4fc5-8bcb-92cba606ce0b" />
+
+## IP Addressing Table
+
+| Device        | Interface | USED   | IP Address        | Description              |
+|--------------|------------|--------|-------------------|--------------------------|
+| MikroTik     | ether1     | WAN    | 192.168.65.130/24 | Internet Access          |
+| MikroTik     | ether2     | LAN    | 192.168.65.130/24 | Internet Access          |
+| MikroTik     | Vlan10     | VLAN   | 192.168.2.1/24    | Gateway VLAN 10          |
+| MikroTik     | Vlan20     | VLAN   | 192.168.3.1/24    | Gateway VLAN 20          |
+| Cisco Switch | e0/0       | TRUNK  | -                 | Trunk to MikroTik        |
+| Cisco Switch | e0/1       | ACCESS | -                 | Access VLAN 10           |
+| Cisco Switch | e0/2       | ACCESS | -                 | Access VLAN 20           |
+| PC Ops       | eth0       | VLAN   | DHCP              | Client VLAN 10           |
+| PC Cust      | eth0       | VLAN   | DHCP              | Client VLAN 20           |
+
+## VLAN Mapping
+
+| VLAN ID | VLAN Name    | Network Address    | Gateway          | DHCP Range                   |
+|---------|--------------|--------------------|------------------|------------------------------|
+| 10      | OPERASIONAL  | 192.168.2.0/24     | 192.168.2.1      | 192.168.2.2 – 192.168.2.254  |
+| 20      | CUSTOMER     | 192.168.3.0/24     | 192.168.3.1      | 192.168.3.2 – 192.168.3.254  |
+
 
 Goals:
 - Separate operational and customer network
