@@ -102,4 +102,6 @@ Select lease time
 
 lease time: 1800
 
+#Firewall basic isolation
+/ip/firewall/filter add chain=forward src-address=192.168.3.0/24 dst-address=192.168.2.0/24 action=drop
 
