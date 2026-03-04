@@ -6,3 +6,11 @@ Goals:
 - Provide DHCP per VLAN
 - Enable inter-VLAN routing via MikroTik
 - Secure network with firewall rules
+
+Testing Results:
+
+- PC VLAN10 successfully received IP via DHCP
+- PC VLAN20 successfully received IP via DHCP
+- Both VLANs can access internet
+- VLAN20 cannot access VLAN10 (firewall working)
+- Inter-VLAN routing tested via ping gateway
